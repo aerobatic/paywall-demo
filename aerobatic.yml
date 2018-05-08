@@ -1,0 +1,41 @@
+id: 92c77b7a-f4a1-48b3-a6ca-9955b751e5dc
+deploy:
+  ignore: []
+  directory: _site
+plugins:
+  - name: paywall
+    path: /paywall-router
+    options:
+      auth0:
+        clientId: $AUTH0_CLIENT_ID
+        clientSecret: $AUTH0_CLIENT_SECRET
+        tenant: aero-demo  
+      chargebee:
+        siteName: $CHARGEBEE_SITE_NAME
+        apiKey: $CHARGEBEE_API_KEY
+
+  # Require users to be authenticated to access all pages nested
+  # within the /members directory
+  - name: auth0
+    path: /members
+    options:
+      clientId: $AUTH0_CLIENT_ID
+      clientSecret: $AUTH0_CLIENT_SECRET
+      tenant: aero-demo
+
+  # Require users to have the "subscriber" role in order to access
+  # any pages in /members. If not a subscriber, they will get a 403
+  # Forbidden page. We will use the custom-errors plugin below
+  # to control that experience.
+  -name: authorized
+    path: /members
+    options:
+      roles: ['subscriber']
+  
+  - name: webpage
+
+  - name: custom-errors
+    options:
+      # Use a custom 403 error page to display the different
+      # subscription plans.
+      403: subscriber_plans.html

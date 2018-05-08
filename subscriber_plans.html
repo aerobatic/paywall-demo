@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<div class="home">
+  <h1>This content requires becoming a member</h1>
+  <p>Here is where you would extol the benefits of membership along with a special link to the checkout page. If you had multiple subscription plans, you could have a pricing table with the different plans, features, and prices.</p>
+  
+  <p>
+    To take the user to the checkout page for a particular plan, you need to create a link to the path where the paywall plugin is mounted in your aerobatic.yml. Passing the Chargebee plan_id and mode=init_checkout as query parameters.
+  </p>
+
+  <!--
+    Pass the Chargebee plan_id and the mode=init_checkout to
+    the configured paywall path from aerobatic.yml 
+  -->
+  <a href="/paywall-router?mode=init_checkout&plan_id=paywall-basic-plan">Subscribe to access premium lesson content</a>
+</div>

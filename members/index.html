@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="home">
+  <h1>Premium lessons</h1>
+  
+  <ul class="post-list">
+  {% for lesson in site.lessons %}
+    <li>
+      <h3>
+        <a class="post-link" href="{{ lesson.url | relative_url }}">
+          {{ lesson.title | escape }}
+        </a>
+      </h3>
+      <p>{{ lesson.description }}</p>
+    </li>
+  {% endfor %}
+</div>
