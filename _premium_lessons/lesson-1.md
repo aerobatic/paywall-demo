@@ -3,6 +3,7 @@ layout: premium_lesson
 title: Lesson 1
 description: Non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
 is_featured: true
+requires_auth: true
 ---
 
 # Duis aute irure dolor in reprehenderit in voluptate velit.

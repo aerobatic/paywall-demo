@@ -13,8 +13,30 @@
           </span>
         </label>
 
-        <div class="trigger">
-          <a class="page-link" href="/members/account">My Account</a>
+        <!--
+            Link to the path where the auth0 plugin is mounted. Pass the initial_screen=signUp
+            in order to default the auth0 login page to the signUp tab.
+            https://www.aerobatic.com/docs/plugins/auth0/#signup-login-link
+
+          Link to the Chargebee billing portal where the subscriber can manage their payment details
+          and unsubscribe.
+        -->
+        <script id="menu_template" type="x-tmpl-mustache">
+          <% #username %>
+            <span class="page-link">Welcome <% username %></span>
+          <% /username %>
+          <% #anonymous %>
+            <a class="page-link" id="signup_link" href="/members?initial_screen=signUp">Sign Up</a>
+          <% /anonymous %>
+          <% #isSubscriber %>
+            <a class="page-link" href="/paywall?mode=billing_portal">Manage Billing</a>
+          <% /isSubscriber %>
+          <% #loggedIn %>
+            <a class="page-link" href="/members?__logout=1">Logout</a>
+          <% /loggedIn %>
+        </script>
+
+        <div id="menu" class="trigger">
         </div>
       </nav>
     </div>

@@ -4,12 +4,14 @@ deploy:
   directory: _site
 plugins:
   - name: paywall
-    path: /paywall-router
+    path: /paywall
     options:
       auth0:
+        audience: urn:auth0-authz-api
         clientId: $AUTH0_CLIENT_ID
         clientSecret: $AUTH0_CLIENT_SECRET
         tenant: aero-demo  
+        apiUrl: https://aero-demo.us.webtask.io/adf6e2f2b84784b57522e3b19dfc9201/api
       chargebee:
         siteName: $CHARGEBEE_SITE_NAME
         apiKey: $CHARGEBEE_API_KEY
@@ -27,15 +29,18 @@ plugins:
   # any pages in /members. If not a subscriber, they will get a 403
   # Forbidden page. We will use the custom-errors plugin below
   # to control that experience.
-  -name: authorized
+  - name: authorized
     path: /members
     options:
       roles: ['subscriber']
-  
+
+  - name: client-config
+
   - name: webpage
 
   - name: custom-errors
     options:
-      # Use a custom 403 error page to display the different
-      # subscription plans.
-      403: subscriber_plans.html
+      errors:
+        # Use a custom 403 error page to display the different
+        # subscription plans.
+        403: subscriber_plans.html
