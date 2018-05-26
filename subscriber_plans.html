@@ -10,6 +10,11 @@ layout: default
     To take the user to the checkout page for a particular plan, you need to create a link to the path where the paywall plugin is mounted in your aerobatic.yml. Passing the Chargebee plan_id and mode=init_checkout as query parameters.
   </p>
 
+  <div data-template="subscriber_plans_template"></div>
+  <script id="subscriber_plans_template" type="x-tmpl-mustache">
+    
+  </script>
+
   <!--
     Pass the Chargebee plan_id and the mode=init_checkout to
     the configured paywall path from aerobatic.yml 

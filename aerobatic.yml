@@ -6,11 +6,12 @@ plugins:
   - name: paywall
     path: /paywall
     options:
+      thankYouPage: members/thankyou.html
       auth0:
         audience: urn:auth0-authz-api
         clientId: $AUTH0_CLIENT_ID
         clientSecret: $AUTH0_CLIENT_SECRET
-        tenant: aero-demo  
+        tenant: aero-demo
         apiUrl: https://aero-demo.us.webtask.io/adf6e2f2b84784b57522e3b19dfc9201/api
       chargebee:
         siteName: $CHARGEBEE_SITE_NAME
@@ -25,16 +26,34 @@ plugins:
       clientSecret: $AUTH0_CLIENT_SECRET
       tenant: aero-demo
 
-  # Require users to have the "subscriber" role in order to access
-  # any pages in /members. If not a subscriber, they will get a 403
-  # Forbidden page. We will use the custom-errors plugin below
-  # to control that experience.
+  # Each lesson has it's own authorized plugin declaration. This allows us
+  # to limit access to subscribers with either a lesson specific plan or
+  # the "all-access-pass" which grants access to all the premium lessons.
   - name: authorized
-    path: /members
+    path: /members/lesson-1
     options:
-      roles: ['subscriber']
+      # Render this page instead of the actual content
+      # when a user is not subscribed to a plan that grants
+      # access. This page should include a link to 
+      notAuthorizedPage: /members/lesson-1/subscribe.html
+      roles:
+        - premium-lesson-1-plan
+        - all-access-plan
 
-  - name: client-config
+  - name: authorized
+    path: /members/lesson-2
+    options:
+      roles:
+        - premium-lesson-2-plan
+        - all-access-plan
+
+  # If you just had one subscriber plan that grants access to all premium content,
+  # then you could get by with just a single authorized plugin like so:
+  # - name: authorized
+  #     path: /members
+  #     options:
+  #       roles:
+  #         - paid-subscriber-plan
 
   - name: webpage
 

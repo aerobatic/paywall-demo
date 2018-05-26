@@ -20,6 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+port: 5999
 
 # Build settings
 markdown: kramdown
@@ -27,27 +28,21 @@ theme: minima
 plugins:
   - jekyll-feed
 
-collections:
-  free_lessons:
-    output: true
-    # Output the free lessons outside of the paywall protected
-    # /members area
-    permalink: /:collection/:name
-
-  premium_lessons:
-    output: true
-    # We want to output each lesson page behind the
-    # paywall configured on the /members directory
-    permalink: /members/:collection/:name
+# defaults:
+#   - scope:
+#     path: "members/premium/*"
+#     values:
+#       permalink: /premium_lessons/:
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - docs

@@ -2,6 +2,7 @@
 layout: free_lesson
 title: Free Lesson 1
 description: Laboris nisi ut aliquip ex ea commodo consequat. Eaque ipsa quae ab illo inventore veritatis et quasi. Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+free_lesson: true
 ---
 
 # Lorem ipsum dolor sit amet, consectetur adipisicing elit.

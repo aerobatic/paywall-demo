@@ -1,8 +1,8 @@
 ---
 layout: premium_lesson
-title: Lesson 3
+title: Premium Lesson 3
 description: Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo. Totam rem aperiam. Totam rem aperiam.
-is_featured: true
+premium_lesson: true
 ---
 
 # Esse cillum dolore eu fugiat nulla pariatur.

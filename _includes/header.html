@@ -25,15 +25,15 @@
           <% #username %>
             <span class="page-link">Welcome <% username %></span>
           <% /username %>
-          <% #anonymous %>
-            <a class="page-link" id="signup_link" href="/members?initial_screen=signUp">Sign Up</a>
-          <% /anonymous %>
-          <% #isSubscriber %>
-            <a class="page-link" href="/paywall?mode=billing_portal">Manage Billing</a>
-          <% /isSubscriber %>
-          <% #loggedIn %>
-            <a class="page-link" href="/members?__logout=1">Logout</a>
-          <% /loggedIn %>
+          <% #signUpUrl %>
+            <a class="page-link" href="<% signUpUrl %>">Sign Up</a>
+          <% /signUpUrl %>
+          <% #billingPortalUrl %>
+            <a class="page-link" href="<% billingPortalUrl %>">Manage Billing</a>
+          <% /billingPortalUrl %>
+          <% #logOutUrl %>
+            <a class="page-link" href="<% logOutUrl %>">Logout</a>
+          <% /logOutUrl %>
         </script>
 
         <div id="menu" class="trigger">

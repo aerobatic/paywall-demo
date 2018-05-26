@@ -1,14 +1,15 @@
 ---
 layout: premium_lesson
-title: Lesson 1
+title: Premium Lesson 1
 description: Non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-is_featured: true
-requires_auth: true
+premium_lesson: true
 ---
 
 # Duis aute irure dolor in reprehenderit in voluptate velit.
 
 Non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minim veniam, quis nostrud exercitation ullamco. Nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam.
+
+![Premium content](premium.jpg)
 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa. **At vero eos et accusamus.** _Duis aute irure dolor in reprehenderit in voluptate velit._ Et harum quidem rerum facilis est et expedita distinctio.
 

@@ -1,8 +1,8 @@
 ---
 layout: premium_lesson
-title: Lesson 2
+title: Premium Lesson 2
 description: Quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-is_featured: true
+premium_lesson: true
 ---
 
 # Lorem ipsum dolor sit amet, consectetur adipisicing elit.

@@ -2,6 +2,7 @@
 layout: free_lesson
 title: Free Lesson 2
 description: Itaque earum rerum hic tenetur a sapiente delectus. Duis aute irure dolor in reprehenderit in voluptate velit. Qui officia deserunt mollit anim id est laborum.
+free_lesson: true
 ---
 
 # Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
