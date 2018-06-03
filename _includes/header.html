@@ -13,30 +13,17 @@
           </span>
         </label>
 
-        <!--
-            Link to the path where the auth0 plugin is mounted. Pass the initial_screen=signUp
-            in order to default the auth0 login page to the signUp tab.
-            https://www.aerobatic.com/docs/plugins/auth0/#signup-login-link
-
-          Link to the Chargebee billing portal where the subscriber can manage their payment details
-          and unsubscribe.
-        -->
-        <script id="menu_template" type="x-tmpl-mustache">
-          <% #username %>
-            <span class="page-link">Welcome <% username %></span>
-          <% /username %>
-          <% #signUpUrl %>
-            <a class="page-link" href="<% signUpUrl %>">Sign Up</a>
-          <% /signUpUrl %>
-          <% #billingPortalUrl %>
-            <a class="page-link" href="<% billingPortalUrl %>">Manage Billing</a>
-          <% /billingPortalUrl %>
-          <% #logOutUrl %>
-            <a class="page-link" href="<% logOutUrl %>">Logout</a>
-          <% /logOutUrl %>
-        </script>
-
         <div id="menu" class="trigger">
+          <!-- The menu to show for logged-in users -->
+          <div data-paywall-logged-in>
+            <span class="page-link">Welcome <span data-paywall-username></span></span>
+            <a class="page-link" data-paywall-billing-portal href="javascript:void(0)">Manage Billing</a>
+            <a class="page-link" data-paywall-logout href="javascript:void(0)">Logout</a>
+          </div>
+          <!-- The menu to show for anonymous (non-logged in) users -->
+          <div data-paywall-anonymous>
+            <a class="page-link" data-paywall-signup href="javascript:void(0)">Sign Up</a>
+          </div>
         </div>
       </nav>
     </div>

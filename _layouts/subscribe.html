@@ -3,17 +3,18 @@ layout: default
 ---
 
 <div class="home">
+  <h2>Paid subscription required</h2>
   <p>
     This premium lesson requires a paid subscription to access. You can purchase this lesson for ${{page.lesson_cost}}. Or purchase an All Access Pass for $25 a month that gives you unlimited access to all premium lessons.
   </p>
 
   <ul class="post-list">
     <li>
-      <h3><a href="/paywall?mode=init_checkout&plan_id={{page.chargebee_plan_id}}">Purchase {{page.lesson_name}}</a></h3>
+      <button class="primary-button" data-paywall-subscribe data-paywall-plan-id="{{ page.chargebee_plan_id }}">Purchase {{page.lesson_name}} - ${{page.lesson_cost}}</button>
       <p>You will have unlimited access to this lesson for 1 year.</p>
     </li>
     <li>
-      <h3><a href="/paywall?mode=init_checkout&plan_id=all-access-pass">Purchase the All-Access Pass</a></h3>
+      <button class="primary-button" data-paywall-subscribe data-paywall-plan-id="all-access-pass">Purchase the All-Access Pass - $25 / month</button>
       <p>
         For the best deal, purchase an All Access Pass for unlimited access to all premium lessons for just <strong>$25 a month</strong>!
       </p>

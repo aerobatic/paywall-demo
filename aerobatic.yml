@@ -16,6 +16,8 @@ plugins:
       chargebee:
         siteName: $CHARGEBEE_SITE_NAME
         apiKey: $CHARGEBEE_API_KEY
+        webhookUser: aerobatic-webhook
+        webhookPassword: $CHARGEBEE_WEBHOOK_PASSWORD
 
   # Require users to be authenticated to access all pages nested
   # within the /members directory
@@ -37,29 +39,38 @@ plugins:
       # access. This page should include a link to 
       notAuthorizedPage: /members/lesson-1/subscribe.html
       roles:
-        - premium-lesson-1-plan
-        - all-access-plan
+        - premium-lesson-1
+        - all-access-pass
 
   - name: authorized
     path: /members/lesson-2
     options:
+      notAuthorizedPage: /members/lesson-2/subscribe.html
       roles:
-        - premium-lesson-2-plan
-        - all-access-plan
+        - premium-lesson-2
+        - all-access-pass
+
+  - name: authorized
+    path: /members/lesson-3
+    options:
+      notAuthorizedPage: /members/lesson-3/subscribe.html
+      roles:
+        - premium-lesson-3
+        - all-access-pass
 
   # If you just had one subscriber plan that grants access to all premium content,
-  # then you could get by with just a single authorized plugin like so:
+  # then you could get by with just a single authorized plugin instance like so:
   # - name: authorized
   #     path: /members
   #     options:
   #       roles:
   #         - paid-subscriber-plan
 
-  - name: webpage
-
-  - name: custom-errors
+  # This exposes window.__aerobatic__.chargebeeSiteName to client JavaScript which is in
+  # turn passed to chargebee js. The environment variable can be overridden for the "test"
+  # deploy stage to point to your chargebee test instance.
+  - name: client-config
     options:
-      errors:
-        # Use a custom 403 error page to display the different
-        # subscription plans.
-        403: subscriber_plans.html
+      chargebeeSiteName: $CHARGEBEE_SITE_NAME
+
+  - name: webpage

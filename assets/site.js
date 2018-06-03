@@ -2,9 +2,16 @@
   var queryParams = parseQuery(location.search);
   var loggedInUser = getLoggedInUser();
 
+  var chargebeeInstance = Chargebee.init({
+    site: "aero-paywall-test"
+  });
+
   renderHeaderMenu(loggedInUser);
 
-  if (/\/thankyou/.test(location.pathname)) {
+  // Register click handler for any subscribe buttons
+  $("[data-subscribe-button]").click(subscribeOnClick);
+
+  if (/mode=subscribe_thankyou/.test(location.search)) {
     renderThankYouPage(queryParams);
   }
 
@@ -24,13 +31,49 @@
           "/paywall?mode=billing_portal&return_url=" + location.pathname;
       }
 
-      templateParams.logOutUrl = "/members?__logout=1";
+      templateParams.logOutUrl = auth0Path + "?__logout=1";
     } else {
       // If the user is not logged-in, show a "Sign Up" link in the header
-      templateParams.signUpUrl = "/members?initial_screen=signUp";
+      templateParams.signUpUrl = auth0Path + "?initial_screen=signUp";
     }
 
     bindTemplateContent("menu_template", templateParams, "menu");
+  }
+
+  // Click event handler for any subscribe buttons
+  function subscribeOnClick() {
+    var planId = $(this).data("planId");
+
+    chargebeeInstance.openCheckout({
+      hostedPage: function() {
+        // Make a fetch call to get the hosted checkout page
+        return fetch(
+          "/paywall?mode=get_hosted_checkout_page&plan_id=" +
+            planId +
+            "&return_url=" +
+            location.href,
+          { credentials: "same-origin" }
+        ).then(function(resp) {
+          return resp.json();
+        });
+      },
+      error: function(error) {
+        // Optional
+        // will be called if the promise passed causes an error
+      },
+      success: function(hostedPageId) {
+        // Optional
+        // will be called when a successful checkout happens.
+        // return fetch(
+        //   "/paywall?mode=checkout_success&hosted_page_id=" + hostedPageId,
+        //   { credentials: "same-origin" }
+        // ).then(function() {
+        //   // Reload the window to display the actual content the customer
+        //   // just paid for.
+        //   location.reload();
+        // });
+      }
+    });
   }
 
   // The thankyou page is called with the following query parameters:
