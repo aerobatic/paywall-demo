@@ -10,7 +10,7 @@ layout: default
   Content in the /free-lessons/* directory is outside of the paywalled section of the site, so it
   can be accessed by the general public.
   -->
-  {% assign free_lessons = site.pages | where: "free_lesson", true %}
+  {% assign free_lessons = site.pages | where: "free_lesson", true | sort: "title" %}
   <h2>Free Lessons</h2>
   <ul class="post-list">
     {% for lesson in free_lessons %}
@@ -32,7 +32,7 @@ layout: default
     Any page nested within the /members/* directory requires the user to
     be both logged-in and have the "subscriber" role.
   -->
-  {% assign premium_lessons = site.pages | where: "premium_lesson", true %}
+  {% assign premium_lessons = site.pages | where: "premium_lesson", true | sort: "title" %}
   <ul class="post-list">
     {% for lesson in premium_lessons %}
       <li>

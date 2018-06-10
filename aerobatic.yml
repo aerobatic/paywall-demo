@@ -3,6 +3,14 @@ deploy:
   ignore: []
   directory: _site
 plugins:
+  # This exposes window.__aerobatic__.chargebeeSiteName to client JavaScript which is in
+  # turn passed to chargebee js. The environment variable can be overridden for the "test"
+  # deploy stage to point to your chargebee test instance. It needs to be delcared BEFORE
+  # the paywall plugin.
+  - name: client-config
+    options:
+      chargebeeSiteName: $CHARGEBEE_SITE_NAME
+
   - name: paywall
     path: /paywall
     options:
@@ -66,11 +74,5 @@ plugins:
   #       roles:
   #         - paid-subscriber-plan
 
-  # This exposes window.__aerobatic__.chargebeeSiteName to client JavaScript which is in
-  # turn passed to chargebee js. The environment variable can be overridden for the "test"
-  # deploy stage to point to your chargebee test instance.
-  - name: client-config
-    options:
-      chargebeeSiteName: $CHARGEBEE_SITE_NAME
 
   - name: webpage
